@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login e Recuperação - Banco de Questões</title>
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="login-header">
+            <h1>Banco de Questões</h1>
+            <p>Entre com sua conta ou redefina sua senha</p>
+        </div>
+
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">E-mail de Acesso</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Sua senha" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Entrar na Plataforma</button>
+        </form>
+
+        <div id="feedback-message" class="message-box"></div>
+
+        <div class="login-footer">
+            <!-- Botão ligado ao fluxo de e-mail do Supabase configurado anteriormente -->
+            <a href="#" id="btn-reset-password">Redefinir senha</a>
+            <p>|</p>
+            <a href="#" id="btn-help">Ajuda</a>
+        </div>
+    </div>
+
+    <footer>
+        <script type="module" src="scripts/login.js"></script>
+    </footer>
+</body>
+</html>

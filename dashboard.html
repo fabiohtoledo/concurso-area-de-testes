@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Área do Aluno PM</title>
+    <script type="module" src="scripts/getdumb.js"></script>
+    <script type="module" src="scripts/dashboard.js"></script>
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Cabeçalho da Página -->
+        <header>
+            <h1>Plataforma de Questões - PM</h1>
+            <div style="display: flex; flex-direction: row; align-items: center; gap: 1rem;" id="userLoginInfo">
+                <div style="display: flex; flex-direction: column; gap: 0.1rem;" id="userInfo" class="user-info">
+                    <span>Olá, <strong id="userName">Aluno</strong></span>
+                    <span id="userEmail">aluno@email.com</span>
+                </div>
+                <div>
+                    <button class="btn-logout" id="btnLogout" onclick="fazerLogout()">Sair</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Banner de Status da Assinatura -->
+        <div class="subscription-banner">
+            <div>
+                <h2>Status do Seu Acesso</h2>
+                <span id="subscriptionStatus" class="status-badge">Assinatura Ativa</span>
+            </div>
+            <div>
+                <p>Válido até: <strong id="subscriptionExpireDate">31/12/2026</strong></p>
+            </div>
+        </div>
+
+        <!-- Estatísticas Rápidas -->
+        <h2 class="section-title">Seu Desempenho</h2>
+        <div id="contQuestFeitas" class="stats-grid">
+            <!-- Card: Questões feitas por matéria -->
+            <div class="stat-card">
+                <h3>Questões Feitas</h3>
+                <ul class="stat-list">
+                    <li id="qFeitasPor" class="stat-item">
+                        <span>Língua Portuguesa</span>
+                        <strong>0</strong>
+                    </li>
+                    <li id="qFeitasMat" class="stat-item">
+                        <span>Matemática</span>
+                        <strong>0</strong>
+                    </li>
+                    <li id="qFeitasGer" class="stat-item">
+                        <span>Conhecimentos Gerais</span>
+                        <strong>0</strong>
+                    </li>
+                    <li id="qFeitasInf" class="stat-item">
+                        <span>Informática</span>
+                        <strong>0</strong>
+                    </li>
+                    <li id="qFeitasAdm" class="stat-item">
+                        <span>Administração Pública</span>
+                        <strong>0</strong>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card: % de Acerto por matéria ultmas 20 -->
+            <div id="contPorcenAcertos" class="stat-card">
+                <h3>% de Acerto por Matéria nas Ultimas 20 Questões</h3>
+                <ul class="stat-list">
+                    <li id="porcPor" class="stat-item">
+                        <span>Língua Portuguesa</span>
+                        <strong style="color: var(--success-color);">-</strong>
+                    </li>
+                    <li id="porcMat" class="stat-item">
+                        <span>Matemática</span>
+                        <strong style="color: var(--error-color);">-</strong>
+                    </li>
+                    <li id="porcGer" class="stat-item">
+                        <span>Conhecimentos Gerais</span>
+                        <strong style="color: var(--success-color);">-</strong>
+                    </li>
+                    <li id="porcInf" class="stat-item">
+                        <span>Informática</span>
+                        <strong style="color: var(--text-main);">-</strong>
+                    </li>
+                    <li id="porcAdm" class="stat-item">
+                        <span>Administração Pública</span>
+                        <strong style="color: var(--success-color);">-</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Lista de Matérias -->
+        <h2 class="section-title">Matérias do Edital</h2>
+        <div class="subject-grid">
+            
+            <div class="subject-card">
+                <div>
+                    <h4>Língua Portuguesa e Interpretação de Texto</h4>
+                    <p>Gramática, ortografia, sintaxe, crase e interpretação de texto.</p>
+                </div>
+                <a href="questionstab.html?portugues"><button class="btn-subject">Acessar Questões</button></a>
+            </div>
+
+            <div class="subject-card">
+                <div>
+                    <h4>Matemática</h4>
+                    <p>Raciocínio lógico, porcentagem, equações, geometria e estatística básica.</p>
+                </div>
+                <a href="questionstab.html?matematica"><button class="btn-subject">Acessar Questões</button></a>
+            </div>
+
+            <div class="subject-card">
+                <div>
+                    <h4>Conhecimentos Gerais</h4>
+                    <p>História, geografia, atualidades e conhecimentos regionais/nacionais.</p>
+                </div>
+                <a href="questionstab.html?gerais"><button class="btn-subject">Acessar Questões</button></a>
+            </div>
+
+            <div class="subject-card">
+                <div>
+                    <h4>Noções Básicas de Informática</h4>
+                    <p>Sistemas operacionais, pacote Office/LibreOffice, redes e segurança.</p>
+                </div>
+                <a href="questionstab.html?informatica"><button class="btn-subject">Acessar Questões</button></a>
+            </div>
+
+            <div class="subject-card">
+                <div>
+                    <h4>Noções de Administração Pública</h4>
+                    <p>Direito Constitucional, Administrativo, Ética e Legislação Institucional.</p>
+                </div>
+                <a href="questionstab.html?administracao"><button class="btn-subject">Acessar Questões</button></a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <footer>
+        <script>
+                function fazerLogout() {
+                    localStorage.removeItem('usuario_logado');
+                    window.location.href = 'login.html';
+                }
+        </script>
+    </footer>
+</body>
+</html>

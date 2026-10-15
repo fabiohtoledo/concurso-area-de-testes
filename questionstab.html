@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolução de Questões - Concurso PM</title>
+    <script type="module" src="scripts/getdumb.js"></script>    
+    <script type="module" src="scripts/questionstab.js"></script>    
+    <link rel="stylesheet" href="styles/questionstab.css">
+</head>
+<body>
+
+    <!-- Topo -->
+    <header>
+        <div class="header-title">
+            <h1 id="materiaTitulo">Carregando Matéria...</h1>
+            <p>Selecione um tema ao lado para iniciar os estudos</p>
+        </div>
+        <a href="dashboard.html" class="back-link">Voltar ao Dashboard</a>
+    </header>
+
+    <!-- Layout com Menu Lateral e Centro -->
+    <div class="main-layout">
+        
+        <!-- Lado Esquerdo: Menu de Temas -->
+        <aside>
+            <h2>Temas do Edital</h2>
+            <ul class="theme-list" id="themeListContainer">
+                <!-- Preenchido via JavaScript dinamicamente com base no parâmetro da URL -->
+                 <li class="theme-item" style="padding: 10px; color: #666;">Nenhum tema cadastrado ainda.</li>
+            </ul>
+        </aside>
+
+        <!-- Centro da Tela: Área de Estudo (Teoria + Questão) -->
+        <section class="content-area">
+            <div class="question-card" id="questionContainer">
+                <p>Selecione um tema e uma dificuldade ao lado</p>
+
+            </div>
+            
+            <!-- Teoria Resumida do Tema
+            <div class="theory-box" id="theoryContainer">
+                <h3>Teoria Resumida: Crase</h3>
+                <p>A crase é a fusão da preposição <strong>a</strong> com o artigo definido feminino <strong>a</strong> (ou com os pronomes demonstrativos a, aquele, aquela, aquilo). Regra geral: emprega-se antes de palavras femininas quando o regente exige a preposição "a".</p>
+            </div>
+
+            
+            <div class="question-card" id="questionContainer">
+                <div class="question-header">
+                    <span>Questão 01 • Banca: VUNESP</span>
+                    <span>% de Acertos: 85%</span>
+                </div>
+                
+                <div class="question-statement">
+                    Assinale a alternativa em que o uso do acento indicativo de crase está <strong>correto</strong> de acordo com a norma-padrão da língua portuguesa:
+                </div>
+
+                <div class="options-list">
+                    <label class="option-item">
+                        <input type="radio" name="qst1" value="A">
+                        <span class="option-text">A) Entregou o relatório à Direção da corporação.</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="qst1" value="B">
+                        <span class="option-text">B) Os policiais foram à pé fazer a ronda ostensiva.</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="qst1" value="C">
+                        <span class="option-text">C) Ficaram frente à frente na abordagem policial.</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="radio" name="qst1" value="D">
+                        <span class="option-text">D) Prefiro rondas noturnas à rondas diurnas.</span>
+                    </label>
+                </div>
+
+                <button class="btn-action" id="btnResponder">Responder Questão</button>
+
+                
+                <div class="explanation-box" id="explanationBox">
+                    <h4>Gabarito Comentado: Alternativa A</h4>
+                    <p><strong>Justificativa:</strong> O verbo "entregar" rege a preposição "a" (quem entrega, entrega algo <em>a</em> alguém) e o substantivo feminino "Direção" aceita o artigo "a". Logo, ocorre a fusão: <em>a + a = à</em>. Na B, "pé" é palavra masculina; na C, expressões locuções formadas por palavras repetidas não levam crase; na D, não há crase antes de palavra no plural sem artigo.</p>
+                </div>
+            </div> -->
+
+        </section>
+    </div>
+
+</body>
+</html>

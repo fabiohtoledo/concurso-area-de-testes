@@ -1,0 +1,214 @@
+:root {
+  --primary-color: #1e3a8a; /* Azul Marinho Institucional / PM */
+  --primary-hover: #1e40af; /* Azul um pouco mais claro para hover */
+  --bg-color: #f1f5f9;      /* Fundo cinza claro corporativo */
+  --card-bg: #ffffff;       /* Fundo dos cartões em branco puro */
+  --text-main: #0f172a;     /* Texto principal escuro */
+  --text-muted: #475569;    /* Texto secundário/mutado */
+  --border-color: #cbd5e1;  /* Bordas nítidas */
+  --error-color: #ef4444;   /* Vermelho para erros */
+  --success-color: #16a34a; /* Verde para sucesso */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding: 2rem 1rem;
+}
+body {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Top Bar / Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  background-color: var(--card-bg);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+header h1 {
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+#userEmail{
+  color: var(--text-muted);
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-logout {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-logout:hover {
+  border-color: var(--error-color);
+  color: var(--error-color);
+}
+
+/* Banner de Assinatura */
+.subscription-banner {
+  background-color: var(--card-bg);
+  border-left: 6px solid var(--success-color);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-badge {
+  display: inline-block;
+  background-color: #dcfce7;
+  color: var(--success-color);
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* Seção de Estatísticas */
+.section-title {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.stat-card h3 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.stat-list {
+  list-style: none;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--bg-color);
+  font-size: 0.9rem;
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+}
+
+/* Seção de Matérias */
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.subject-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.subject-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.subject-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.subject-card p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.btn-subject {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.btn-subject:hover {
+  background-color: var(--primary-hover);
+}
+
+
+/* Para Tablets (telas até 1024px) e Celulares */
+@media (max-width: 680px) {
+  header {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 505px) {
+  .subscription-banner {
+    flex-direction: column;
+    gap: 1.5rem;
+    
+    border-top: 6px solid var(--success-color);
+    border-left: 1px solid var(--border-color);
+  }
+}

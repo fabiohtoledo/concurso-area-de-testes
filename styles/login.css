@@ -1,0 +1,125 @@
+:root {
+  --primary-color: #1e3a8a; /* Azul Marinho Institucional / PM */
+  --primary-hover: #1e40af; /* Azul um pouco mais claro para hover */
+  --bg-color: #f1f5f9;      /* Fundo cinza claro corporativo */
+  --card-bg: #ffffff;       /* Fundo dos cartões em branco puro */
+  --text-main: #0f172a;     /* Texto principal escuro */
+  --text-muted: #475569;    /* Texto secundário/mutado */
+  --border-color: #cbd5e1;  /* Bordas nítidas */
+  --error-color: #ef4444;   /* Vermelho para erros */
+  --success-color: #16a34a; /* Verde para sucesso */
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1rem;
+}
+
+.login-card {
+  background-color: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  border-top: 4px solid var(--primary-color);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-header h1 {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-main);
+}
+
+.login-header p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: var(--primary-color);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 0.5rem;
+}
+
+.btn-submit:hover {
+  background-color: var(--primary-hover);
+}
+
+.login-footer {
+  text-align:center;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.5rem;
+  justify-content: center;
+
+}
+
+.login-footer a {
+  font-size: 0.875rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+.error{
+  color: var(--error-color);
+}
+.success{
+  color: var(--success-color);
+}

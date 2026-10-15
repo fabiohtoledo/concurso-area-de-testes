@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definir Nova Senha</title>
+    <!-- Importa o Supabase JS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="styles/login.css">
+    <!-- <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f8; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { margin-bottom: 20px; color: #333; }
+        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #2563eb; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #1d4ed8; }
+        #mensagem { margin-top: 15px; font-size: 14px; text-align: center; }
+    </style> -->
+</head>
+<body>
+
+    <div class="login-card">
+        <h2 class="login-header">Criar Nova Senha</h2>
+        <form class="form-group" id="recovery-form">
+            <input type="password" id="new-password" placeholder="Digite sua nova senha" required minlength="6">
+            <button class="btn-submit" id="btn-submit" type="submit">Salvar Nova Senha</button>
+        </form>
+        <div id="mensagem"></div>
+    </div>
+
+    <script>
+            const SUPABASE_URL = 'https://mhuknxaoeozoxqkwzqcb.supabase.co';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1odWtueGFvZW96b3hxa3d6cWNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4MjE3MDUsImV4cCI6MjEwNzM5NzcwNX0.pvSpGvpEtiMaKQoxwMPYB-O3epKbrnzdNMRnTKAmIfw';
+
+            // 1. Cria o cliente Supabase
+            const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+            const form = document.getElementById('recovery-form');
+            const passwordInput = document.getElementById('new-password');
+            const btnSubmit = document.getElementById('btn-submit');
+            const mensagem = document.getElementById('mensagem');
+
+            // 2. Verifica se a sessão do link foi capturada corretamente
+            supabaseClient.auth.onAuthStateChange(async (event, session) => {
+                if (event === 'PASSWORD_RECOVERY' || event === 'SIGNED_IN' || session) {
+                    console.log("Sessão capturada para atualização de senha:", event);
+                }
+            });
+
+            // 3. Ao enviar o formulário
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault(); // Impede o reload da página!
+
+                const novaSenha = passwordInput.value;
+
+                if (!novaSenha || novaSenha.length < 6) {
+                    mensagem.textContent = "A senha deve ter no mínimo 6 caracteres.";
+                    mensagem.style.color = "red";
+                    return;
+                }
+
+                btnSubmit.disabled = true;
+                mensagem.textContent = "Salvando nova senha...";
+                mensagem.style.color = "#2563eb";
+
+                try {
+                    // Atualiza a senha no Supabase Auth
+                    const { data, error } = await supabaseClient.auth.updateUser({
+                        password: novaSenha
+                    });
+
+                    if (error) {
+                        throw error;
+                    }
+
+                    mensagem.textContent = "Senha alterada com sucesso! Redirecionando para o login...";
+                    mensagem.style.color = "green";
+
+                    // Encerra a sessão temporária para forçar o login manual com a nova senha
+                    await supabaseClient.auth.signOut();
+
+                    setTimeout(() => {
+                        window.location.href = 'http://127.0.0.1:5500/login.html'; // Ajuste conforme a rota do seu servidor de login
+                    }, 2000);
+
+                } catch (err) {
+                    console.error("Erro no updateUser:", err);
+                    mensagem.textContent = "Erro ao salvar a senha: " + err.message;
+                    mensagem.style.color = "red";
+                    btnSubmit.disabled = false;
+                }
+            });
+        </script>
+</body>
+</html>
